@@ -15,7 +15,7 @@ func main() {
 	router.POST("/callbackDisMissGroupCommand", control.CallbackDismissGroup)
 	router.POST("/callbackBeforeJoinGroupCommand", control.CallbackApplyJoinGroupBefore)
 
-	if err := engine.Run("192.168.62.1:8080"); err != nil {
+	if err := engine.Run("127.0.0.1:8080"); err != nil {
 		panic(err)
 	}
 }

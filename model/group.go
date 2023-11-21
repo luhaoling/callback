@@ -40,19 +40,19 @@ type CommonCallbackResp struct {
 
 type CreateGroupResp struct {
 	CommonCallbackResp
-	GroupID           *string `json:"groupID"`
-	GroupName         *string `json:"groupName"`
-	Notification      *string `json:"notification"`
-	Introduction      *string `json:"introduction"`
-	FaceURL           *string `json:"faceURL"`
-	OwnerUserID       *string `json:"ownerUserID"`
-	Ex                *string `json:"ex"`
-	Status            *int32  `json:"status"`
-	CreatorUserID     *string `json:"creatorUserID"`
-	GroupType         *int32  `json:"groupType"`
-	NeedVerification  *int32  `json:"needVerification"`
-	LookMemberInfo    *int32  `json:"lookMemberInfo"`
-	ApplyMemberFriend *int32  `json:"applyMemberFriend"`
+	GroupID           string `json:"groupID"`
+	GroupName         string `json:"groupName"`
+	Notification      string `json:"notification"`
+	Introduction      string `json:"introduction"`
+	FaceURL           string `json:"faceURL"`
+	OwnerUserID       string `json:"ownerUserID"`
+	Ex                string `json:"ex"`
+	Status            int32  `json:"status"`
+	CreatorUserID     string `json:"creatorUserID"`
+	GroupType         int32  `json:"groupType"`
+	NeedVerification  int32  `json:"needVerification"`
+	LookMemberInfo    int32  `json:"lookMemberInfo"`
+	ApplyMemberFriend int32  `json:"applyMemberFriend"`
 }
 
 type CreateGroupAfterReq struct {

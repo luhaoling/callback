@@ -27,19 +27,19 @@ func CreateGroupBefore(c *gin.Context) {
 
 	resp := &model.CreateGroupResp{
 		CommonCallbackResp: respErr,
-		GroupID:            &req.GroupID,
-		GroupName:          &req.GroupName,
-		Notification:       &req.Notification,
-		Introduction:       &req.Introduction,
-		FaceURL:            &req.FaceURL,
-		OwnerUserID:        &req.OwnerUserID,
-		Ex:                 &req.Ex,
-		Status:             &req.Status,
-		CreatorUserID:      &req.CreatorUserID,
-		GroupType:          &req.GroupType,
-		NeedVerification:   &req.NeedVerification,
-		LookMemberInfo:     &req.LookMemberInfo,
-		ApplyMemberFriend:  &req.ApplyMemberFriend,
+		GroupID:            req.GroupID,
+		GroupName:          req.GroupName,
+		Notification:       req.Notification,
+		Introduction:       req.Introduction,
+		FaceURL:            req.FaceURL,
+		OwnerUserID:        req.OwnerUserID,
+		Ex:                 req.Ex,
+		Status:             req.Status,
+		CreatorUserID:      req.CreatorUserID,
+		GroupType:          req.GroupType,
+		NeedVerification:   req.NeedVerification,
+		LookMemberInfo:     req.LookMemberInfo,
+		ApplyMemberFriend:  req.ApplyMemberFriend,
 	}
 	fmt.Printf("%#v", resp)
 	c.JSON(http.StatusOK, resp)
@@ -52,7 +52,7 @@ func CreateGroupAfter(c *gin.Context) {
 	}
 	fmt.Printf("%#v\n", req)
 	resp := &model.CommonCallbackResp{
-		ActionCode: 0,
+		ActionCode: 1,
 		ErrCode:    200,
 		ErrMsg:     "Success",
 		ErrDlt:     "Successful",
