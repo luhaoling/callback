@@ -10,7 +10,12 @@ func main() {
 	router := engine.Group("/sdkName")
 	router.POST("/callbackBeforeCreateGroupCommand", control.CreateGroupBefore)
 	router.POST("/callbackAfterCreateGroupCommand", control.CreateGroupAfter)
-	if err := engine.Run("127.0.0.1:8080"); err != nil {
+	router.POST("/callbackQuitGroupCommand", control.CallbackQuitGroup)
+	router.POST("/callbackKillGroupCommand", control.CallbackKillGroupMember)
+	router.POST("/callbackDisMissGroupCommand", control.CallbackDismissGroup)
+	router.POST("/callbackBeforeJoinGroupCommand", control.CallbackApplyJoinGroupBefore)
+
+	if err := engine.Run("192.168.62.1:8080"); err != nil {
 		panic(err)
 	}
 }

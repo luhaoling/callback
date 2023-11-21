@@ -11,7 +11,7 @@ import (
 )
 
 func TestCreateGroup(t *testing.T) {
-	url := "http://127.0.0.1:8080/sdkName/callbackBeforeCreateGroupCommand"
+	url := "http://192.168.62.1:8080/sdkName/callbackBeforeCreateGroupCommand"
 
 	user1 := model.GroupAddMemberInfo{
 		UserID:    "user123",
