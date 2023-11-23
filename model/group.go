@@ -276,15 +276,15 @@ type CallbackAfterUpdateUserInfoResp struct {
 
 type CallbackBeforeUserRegisterReq struct {
 	CallbackCommand `json:"callbackCommand"`
-	OperationID     string `json:"operationID"`
-	Secret          string `json:"secret"`
-	UserInfo
-	EventTime int64 `json:"eventTime"`
+	OperationID     string   `json:"operationID"`
+	Secret          string   `json:"secret"`
+	Users           UserInfo `json:"users"`
+	EventTime       int64    `json:"eventTime"`
 }
 
 type CallbackBeforeUserRegisterResp struct {
 	CommonCallbackResp
-	Users UserInfo
+	Users UserInfo `json:"users"`
 }
 
 type CallbackAfterUserRegisterReq struct {
