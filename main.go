@@ -14,6 +14,15 @@ func main() {
 	router.POST("/callbackKillGroupCommand", control.CallbackKillGroupMember)
 	router.POST("/callbackDisMissGroupCommand", control.CallbackDismissGroup)
 	router.POST("/callbackBeforeJoinGroupCommand", control.CallbackApplyJoinGroupBefore)
+	router.POST("/callbackGroupMsgReadCommand", control.CallbackGroupMsgReadCommand)
+	router.POST("/callbackMsgModifyCommand", control.CallbackMsgModifyCommand)
+	router.POST("/callbackAfterUpdateUserInfoCommand", control.CallbackAfterUpdateUserInfoCommand)
+	router.POST("/callbackBeforeUserRegisterCommand", control.CallbackBeforeUserRegisterCommand)
+	router.POST("/callbackAfterUserRegisterCommand", control.CallbackAfterUserRegisterCommand)
+	router.POST("/callbackTransferGroupOwnerAfter", control.CallbackTransferGroupOwnerAfter)
+	router.POST("/callbackBeforeSetFriendRemark", control.CallbackBeforeSetFriendRemark)
+	router.POST("/callbackAfterSetFriendRemark", control.CallbackAfterSetFriendRemark)
+	router.POST("/callbackSingleMsgRead", control.CallbackSingleMsgRead)
 
 	if err := engine.Run("0.0.0.0:18889"); err != nil {
 		panic(err)
