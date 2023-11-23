@@ -215,12 +215,12 @@ func CallbackBeforeJoinGroupCommand(c *gin.Context) {
 }
 
 func CallbackGroupMsgReadCommand(c *gin.Context) {
-	var req model.CallbackJoinGroupReq
+	var req model.CallbackGroupMsgReadReq
 	if err := c.BindJSON(&req); err != nil {
 		return
 	}
 	fmt.Printf("%#v\n", req)
-	resp := &model.CallbackJoinGroupResp{
+	resp := &model.CallbackGroupMsgReadResp{
 		CommonCallbackResp: model.CommonCallbackResp{
 			ActionCode: 0,
 			ErrCode:    200,
@@ -233,13 +233,14 @@ func CallbackGroupMsgReadCommand(c *gin.Context) {
 	c.JSON(http.StatusOK, resp)
 }
 
+// 还需补充
 func CallbackMsgModifyCommand(c *gin.Context) {
-	var req model.CallbackJoinGroupReq
+	var req model.CallbackMsgModifyCommandReq
 	if err := c.BindJSON(&req); err != nil {
 		return
 	}
 	fmt.Printf("%#v\n", req)
-	resp := &model.CallbackJoinGroupResp{
+	resp := &model.CallbackMsgModifyCommandResp{
 		CommonCallbackResp: model.CommonCallbackResp{
 			ActionCode: 0,
 			ErrCode:    200,
@@ -272,12 +273,12 @@ func CallbackAfterUpdateUserInfoCommand(c *gin.Context) {
 }
 
 func CallbackBeforeUserRegisterCommand(c *gin.Context) {
-	var req model.CallbackJoinGroupReq
+	var req model.CallbackBeforeUserRegisterReq
 	if err := c.BindJSON(&req); err != nil {
 		return
 	}
 	fmt.Printf("%#v\n", req)
-	resp := &model.CallbackJoinGroupResp{
+	resp := &model.CallbackBeforeUserRegisterResp{
 		CommonCallbackResp: model.CommonCallbackResp{
 			ActionCode: 0,
 			ErrCode:    200,
@@ -285,18 +286,19 @@ func CallbackBeforeUserRegisterCommand(c *gin.Context) {
 			ErrDlt:     "Successful",
 			NextCode:   2,
 		},
+		Users: req.Users,
 	}
 	fmt.Printf("%#v", resp)
 	c.JSON(http.StatusOK, resp)
 }
 
 func CallbackAfterUserRegisterCommand(c *gin.Context) {
-	var req model.CallbackJoinGroupReq
+	var req model.CallbackAfterUserRegisterReq
 	if err := c.BindJSON(&req); err != nil {
 		return
 	}
 	fmt.Printf("%#v\n", req)
-	resp := &model.CallbackJoinGroupResp{
+	resp := &model.CallbackAfterUserRegisterResp{
 		CommonCallbackResp: model.CommonCallbackResp{
 			ActionCode: 0,
 			ErrCode:    200,
@@ -310,12 +312,12 @@ func CallbackAfterUserRegisterCommand(c *gin.Context) {
 }
 
 func CallbackTransferGroupOwnerAfter(c *gin.Context) {
-	var req model.CallbackJoinGroupReq
+	var req model.CallbackTransferGroupOwnerReq
 	if err := c.BindJSON(&req); err != nil {
 		return
 	}
 	fmt.Printf("%#v\n", req)
-	resp := &model.CallbackJoinGroupResp{
+	resp := &model.CallbackTransferGroupOwnerResp{
 		CommonCallbackResp: model.CommonCallbackResp{
 			ActionCode: 0,
 			ErrCode:    200,
@@ -329,12 +331,12 @@ func CallbackTransferGroupOwnerAfter(c *gin.Context) {
 }
 
 func CallbackBeforeSetFriendRemark(c *gin.Context) {
-	var req model.CallbackJoinGroupReq
+	var req model.CallbackBeforeSetFriendRemarkReq
 	if err := c.BindJSON(&req); err != nil {
 		return
 	}
 	fmt.Printf("%#v\n", req)
-	resp := &model.CallbackJoinGroupResp{
+	resp := &model.CallbackBeforeSetFriendRemarkResp{
 		CommonCallbackResp: model.CommonCallbackResp{
 			ActionCode: 0,
 			ErrCode:    200,
@@ -348,12 +350,12 @@ func CallbackBeforeSetFriendRemark(c *gin.Context) {
 }
 
 func CallbackAfterSetFriendRemark(c *gin.Context) {
-	var req model.CallbackJoinGroupReq
+	var req model.CallbackAfterSetFriendRemarkReq
 	if err := c.BindJSON(&req); err != nil {
 		return
 	}
 	fmt.Printf("%#v\n", req)
-	resp := &model.CallbackJoinGroupResp{
+	resp := &model.CallbackAfterSetFriendRemarkResp{
 		CommonCallbackResp: model.CommonCallbackResp{
 			ActionCode: 0,
 			ErrCode:    200,
@@ -367,12 +369,12 @@ func CallbackAfterSetFriendRemark(c *gin.Context) {
 }
 
 func CallbackSingleMsgRead(c *gin.Context) {
-	var req model.CallbackJoinGroupReq
+	var req model.CallbackSingleMsgReadReq
 	if err := c.BindJSON(&req); err != nil {
 		return
 	}
 	fmt.Printf("%#v\n", req)
-	resp := &model.CallbackJoinGroupResp{
+	resp := &model.CallbackSingleMsgReadResp{
 		CommonCallbackResp: model.CommonCallbackResp{
 			ActionCode: 0,
 			ErrCode:    200,

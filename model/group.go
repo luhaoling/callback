@@ -2,6 +2,35 @@ package model
 
 type CallbackCommand string
 
+type CommonCallbackReq struct {
+	SendID           string   `json:"sendID"`
+	CallbackCommand  string   `json:"callbackCommand"`
+	ServerMsgID      string   `json:"serverMsgID"`
+	ClientMsgID      string   `json:"clientMsgID"`
+	OperationID      string   `json:"operationID"`
+	SenderPlatformID int32    `json:"senderPlatformID"`
+	SenderNickname   string   `json:"senderNickname"`
+	SessionType      int32    `json:"sessionType"`
+	MsgFrom          int32    `json:"msgFrom"`
+	ContentType      int32    `json:"contentType"`
+	Status           int32    `json:"status"`
+	CreateTime       int64    `json:"createTime"`
+	Content          string   `json:"content"`
+	Seq              uint32   `json:"seq"`
+	AtUserIDList     []string `json:"atUserList"`
+	SenderFaceURL    string   `json:"faceURL"`
+	Ex               string   `json:"ex"`
+}
+
+type OfflinePushInfo struct {
+	Title         string `protobuf:"bytes,1,opt,name=title,proto3" json:"title"`
+	Desc          string `protobuf:"bytes,2,opt,name=desc,proto3" json:"desc"`
+	Ex            string `protobuf:"bytes,3,opt,name=ex,proto3" json:"ex"`
+	IOSPushSound  string `protobuf:"bytes,4,opt,name=iOSPushSound,proto3" json:"iOSPushSound"`
+	IOSBadgeCount bool   `protobuf:"varint,5,opt,name=iOSBadgeCount,proto3" json:"iOSBadgeCount"`
+	SignalInfo    string `protobuf:"bytes,6,opt,name=signalInfo,proto3" json:"signalInfo"`
+}
+
 type CreateGroupReq struct {
 	OperationID            string               `json:"operationID,omitempty"`
 	CallbackCommand        string               `json:"callbackCommand,omitempty"`
@@ -125,4 +154,157 @@ type CallbackJoinGroupReq struct {
 
 type CallbackJoinGroupResp struct {
 	CommonCallbackResp
+}
+
+type CallbackBeforeSetFriendRemarkReq struct {
+	CallbackCommand `json:"callbackCommand"`
+	OperationID     string `json:"operationID"`
+	OwnerUserID     string `json:"ownerUserID"`
+	FriendUserID    string `json:"friendUserID"`
+	Remark          string `json:"remark"`
+	EventTime       int64  `json:"eventTime"`
+}
+
+type CallbackBeforeSetFriendRemarkResp struct {
+	CommonCallbackResp
+	Remark string `json:"remark"`
+}
+
+type CallbackAfterSetFriendRemarkReq struct {
+	CallbackCommand `json:"callbackCommand"`
+	OperationID     string `json:"operationID"`
+	OwnerUserID     string `json:"ownerUserID"`
+	FriendUserID    string `json:"friendUserID"`
+	Remark          string `json:"remark"`
+	EventTime       int64  `json:"eventTime"`
+}
+
+type CallbackAfterSetFriendRemarkResp struct {
+	CommonCallbackResp
+}
+
+type CallbackAfterSetGroupMemberInfoReq struct {
+	CallbackCommand `json:"callbackCommand"`
+	GroupID         string  `json:"groupID"`
+	UserID          string  `json:"userID"`
+	Nickname        *string `json:"nickName"`
+	FaceURL         *string `json:"faceURL"`
+	RoleLevel       *int32  `json:"roleLevel"`
+	Ex              *string `json:"ex"`
+	EventTime       int64   `json:"eventTime"`
+}
+
+type CallbackAfterSetGroupMemberInfoResp struct {
+	CommonCallbackResp
+}
+
+type CallbackTransferGroupOwnerReq struct {
+	CallbackCommand `json:"callbackCommand"`
+	GroupID         string `json:"groupID"`
+	OldOwnerUserID  string `json:"oldOwnerUserID"`
+	NewOwnerUserID  string `json:"newOwnerUserID"`
+	EventTime       int64  `json:"eventTime"`
+}
+
+type CallbackTransferGroupOwnerResp struct {
+	CommonCallbackResp
+}
+
+type CallbackGroupMsgReadReq struct {
+	CallbackCommand `json:"callbackCommand"`
+	SendID          string `json:"sendID"`
+	ReceiveID       string `json:"receiveID"`
+	UnreadMsgNum    int64  `json:"unreadMsgNum"`
+	ContentType     int64  `json:"contentType"`
+	EventTime       int64  `json:"eventTime"`
+}
+
+type CallbackGroupMsgReadResp struct {
+	CommonCallbackResp
+}
+
+type CallbackMsgModifyCommandReq struct {
+	CommonCallbackReq
+}
+
+type CallbackMsgModifyCommandResp struct {
+	CommonCallbackResp
+
+	Content          *string          `json:"content"`
+	RecvID           *string          `json:"recvID"`
+	GroupID          *string          `json:"groupID"`
+	ClientMsgID      *string          `json:"clientMsgID"`
+	ServerMsgID      *string          `json:"serverMsgID"`
+	SenderPlatformID *int32           `json:"senderPlatformID"`
+	SenderNickname   *string          `json:"senderNickname"`
+	SenderFaceURL    *string          `json:"senderFaceURL"`
+	SessionType      *int32           `json:"sessionType"`
+	MsgFrom          *int32           `json:"msgFrom"`
+	ContentType      *int32           `json:"contentType"`
+	Status           *int32           `json:"status"`
+	Options          *map[string]bool `json:"options"`
+	OfflinePushInfo  *OfflinePushInfo `json:"offlinePushInfo"`
+	AtUserIDList     *[]string        `json:"atUserIDList"`
+	MsgDataList      *[]byte          `json:"msgDataList"`
+	AttachedInfo     *string          `json:"attachedInfo"`
+	Ex               *string          `json:"ex"`
+}
+
+type CallbackSingleMsgReadReq struct {
+	CallbackCommand `json:"callbackCommand"`
+	SendID          string `json:"sendID"`
+	ReceiveID       string `json:"receiveID"`
+	ContentType     int64  `json:"contentType"`
+	EventTime       int64  `json:"eventTime"`
+}
+
+type CallbackSingleMsgReadResp struct {
+	CommonCallbackResp
+}
+
+type CallbackAfterUpdateUserInfoReq struct {
+	CallbackCommand `json:"callbackCommand"`
+	OperationID     string `json:"operationID"`
+	UserID          string `json:"userID"`
+	Nickname        string `json:"nickName"`
+	FaceURL         string `json:"faceURL"`
+	Ex              string `json:"ex"`
+}
+type CallbackAfterUpdateUserInfoResp struct {
+	CommonCallbackResp
+}
+
+type CallbackBeforeUserRegisterReq struct {
+	CallbackCommand `json:"callbackCommand"`
+	OperationID     string   `json:"operationID"`
+	Secret          string   `json:"secret"`
+	Users           UserInfo `json:"users"`
+	EventTime       int64    `json:"eventTime"`
+}
+
+type CallbackBeforeUserRegisterResp struct {
+	CommonCallbackResp
+	Users UserInfo `json:"users"`
+}
+
+type CallbackAfterUserRegisterReq struct {
+	CallbackCommand `json:"callbackCommand"`
+	OperationID     string   `json:"operationID"`
+	Secret          string   `json:"secret"`
+	Users           UserInfo `json:"users"`
+	EventTime       int64    `json:"eventTime"`
+}
+
+type CallbackAfterUserRegisterResp struct {
+	CommonCallbackResp
+}
+
+type UserInfo struct {
+	UserID           string `protobuf:"bytes,1,opt,name=userID,proto3" json:"userID"`
+	Nickname         string `protobuf:"bytes,2,opt,name=nickname,proto3" json:"nickname"`
+	FaceURL          string `protobuf:"bytes,3,opt,name=faceURL,proto3" json:"faceURL"`
+	Ex               string `protobuf:"bytes,4,opt,name=ex,proto3" json:"ex"`
+	CreateTime       int64  `protobuf:"varint,5,opt,name=createTime,proto3" json:"createTime"`
+	AppMangerLevel   int32  `protobuf:"varint,6,opt,name=appMangerLevel,proto3" json:"appMangerLevel"`
+	GlobalRecvMsgOpt int32  `protobuf:"varint,7,opt,name=globalRecvMsgOpt,proto3" json:"globalRecvMsgOpt"`
 }
