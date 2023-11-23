@@ -289,10 +289,10 @@ type CallbackBeforeUserRegisterResp struct {
 
 type CallbackAfterUserRegisterReq struct {
 	CallbackCommand `json:"callbackCommand"`
-	OperationID     string   `json:"operationID"`
-	Secret          string   `json:"secret"`
-	Users           UserInfo `json:"users"`
-	EventTime       int64    `json:"eventTime"`
+	OperationID     string      `json:"operationID"`
+	Secret          string      `json:"secret"`
+	Users           []*UserInfo `json:"users"`
+	EventTime       int64       `json:"eventTime"`
 }
 
 type CallbackAfterUserRegisterResp struct {
