@@ -273,6 +273,10 @@ func CallbackAfterUpdateUserInfoCommand(c *gin.Context) {
 }
 
 func CallbackBeforeUserRegisterCommand(c *gin.Context) {
+	fmt.Printf("header:%v", c.Request.Header)
+	for k, v := range c.Request.Header {
+		fmt.Println(k, v)
+	}
 	var req model.CallbackBeforeUserRegisterReq
 	if err := c.BindJSON(&req); err != nil {
 		return

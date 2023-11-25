@@ -1,5 +1,7 @@
 package model
 
+import "google.golang.org/protobuf/runtime/protoimpl"
+
 type CallbackCommand string
 
 type CommonCallbackReq struct {
@@ -300,6 +302,10 @@ type CallbackAfterUserRegisterResp struct {
 }
 
 type UserInfo struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
 	UserID           string `protobuf:"bytes,1,opt,name=userID,proto3" json:"userID"`
 	Nickname         string `protobuf:"bytes,2,opt,name=nickname,proto3" json:"nickname"`
 	FaceURL          string `protobuf:"bytes,3,opt,name=faceURL,proto3" json:"faceURL"`
