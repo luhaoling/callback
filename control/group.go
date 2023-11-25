@@ -52,11 +52,11 @@ func CreateGroupAfter(c *gin.Context) {
 	}
 	fmt.Printf("%#v\n", req)
 	resp := &model.CommonCallbackResp{
-		ActionCode: 1,
+		ActionCode: 0,
 		ErrCode:    200,
 		ErrMsg:     "Success",
 		ErrDlt:     "Successful",
-		NextCode:   2,
+		NextCode:   0,
 	}
 
 	fmt.Printf("%#v", resp)
