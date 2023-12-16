@@ -390,3 +390,23 @@ func CallbackSingleMsgRead(c *gin.Context) {
 	fmt.Printf("%#v", resp)
 	c.JSON(http.StatusOK, resp)
 }
+
+func CallbackBeforeSendSingleMsgCommand(c *gin.Context) {
+	var req model.CallbackBeforeSendSingleMsgReq
+	if err := c.BindJSON(&req); err != nil {
+		fmt.Printf("err:%v", err)
+		return
+	}
+	fmt.Printf("%#v", req)
+	resp := &model.CallbackBeforeSendSingleMsgResp{
+		CommonCallbackResp: model.CommonCallbackResp{
+			ActionCode: 0,
+			ErrCode:    200,
+			ErrMsg:     "Success",
+			ErrDlt:     "Successful",
+			NextCode:   2,
+		},
+	}
+	fmt.Printf("%#v", resp)
+	c.JSON(http.StatusOK, resp)
+}

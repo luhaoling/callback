@@ -23,6 +23,7 @@ func main() {
 	router.POST("/callbackBeforeSetFriendRemark", control.CallbackBeforeSetFriendRemark)
 	router.POST("/callbackAfterSetFriendRemark", control.CallbackAfterSetFriendRemark)
 	router.POST("/callbackSingleMsgRead", control.CallbackSingleMsgRead)
+	router.POST("/callbackBeforeSendSingleMsgCommand", control.CallbackBeforeSendSingleMsgCommand)
 
 	if err := engine.Run("0.0.0.0:18889"); err != nil {
 		panic(err)
